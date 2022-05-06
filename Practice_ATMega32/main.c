@@ -1,16 +1,18 @@
 /*
- * main.c
+ * Practice_ATMega32.c
  *
- * Created: 5/6/2022 8:50:21 PM
- *  Author: Mohamed
+ * Created: 07/05/2022 01:35:47
+ * Author : Mohamed
  */ 
 
-#include <xc.h>
+#include <avr/io.h>
+
 
 int main(void)
 {
-    while(1)
+    /* Replace with your application code */
+    while (1) 
     {
-        //TODO:: Please write your application code 
     }
 }
+
