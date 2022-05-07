@@ -111,6 +111,20 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MemMap.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="StdTypes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Utils.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MCAL" />
+    <Folder Include="HAL" />
+    <Folder Include="APP" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
