@@ -9,8 +9,8 @@
 #include "DIO_Interface.h"
 
 #define LCD_PORT PA
-#define RS PINB0
-#define EN PINB1
+#define RS PINB4
+#define EN PINB5
 
 void WriteInstruction(u8 ins)
 {
@@ -30,7 +30,7 @@ void LCD_Init(void)
 	_delay_ms(1);
 	WriteInstruction(0x01);
 	_delay_ms(2);
-	WriteInstruction(0x06);
+	WriteInstruction(0x06); //0x06 for no shift //0x07 for shift
 }
 void WriteData(u8 data)
 {

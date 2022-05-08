@@ -1,17 +1,6 @@
 /*
  * StdTypes.h
  *
- * Created: 07/05/2022 01:42:12
- *  Author: Mohamed
- */ 
-
-
-#ifndef STDTYPES_H_
-#define STDTYPES_H_
-
-/*
- * StdTypes.h
- *
  * Created: 24/04/2022 19:19:24
  *  Author: Mohamed
  */ 
@@ -40,9 +29,5 @@ typedef enum{
 	FALSE,
 	TRUE
 }bool_type;
-
-#endif /* STDTYPES_H_ */
-
-
 
 #endif /* STDTYPES_H_ */
