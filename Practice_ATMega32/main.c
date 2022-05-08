@@ -16,50 +16,26 @@ int main(void)
 {
 	DIO_Init();
 	LCD_Init();
-	u8 i=0;
-	u8 row=0;
 	LCD_Clear();
-	LCD_SetCursor(0,0);
-	LCD_WriteString("Char :");
+	
+	LCD_WriteString("D:");
+	LCD_SetCursor(0,6);
+	LCD_WriteString("H:");
 	LCD_SetCursor(1,0);
-	LCD_WriteString("Ascii:");
+	LCD_WriteString("B:");
+	u8 x=0;
     while (1) 
     {
-		u8 i ;
 		
-		for(i='A';i<='Z';i++)
-		{
-			LCD_SetCursor(0,7);
-			LCD_WriteChar(i);
-			LCD_SetCursor(1,7);
-			LCD_WriteString("   ");
-			LCD_SetCursor(1,7);
-			LCD_WriteNumber(i);
-			_delay_ms(300);
-		}
-		
-		for(i='a';i<='z';i++)
-		{
-			LCD_SetCursor(0,7);
-			LCD_WriteChar(i);
-			LCD_SetCursor(1,7);
-			LCD_WriteString("   ");
-			LCD_SetCursor(1,7);
-			LCD_WriteNumber(i);
-			_delay_ms(300);
-		}
-	
-		for(i='0';i<='9';i++)
-		{
-			LCD_SetCursor(0,7);
-			LCD_WriteChar(i);
-			LCD_SetCursor(1,7);
-			LCD_WriteString("   ");
-			LCD_SetCursor(1,7);
-			LCD_WriteNumber(i);
-			_delay_ms(300);
-		}
-		
+		LCD_SetCursor(0,2);
+		LCD_WriteNumber(x);
+		LCD_SetCursor(0,8);
+		LCD_WriteHex(x);
+		LCD_SetCursor(1,2);
+		LCD_WriteBinary(x);
+
+		x++;
+		_delay_ms(1000);
     }
 }
 

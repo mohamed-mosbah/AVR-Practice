@@ -90,11 +90,30 @@ void LCD_WriteNumber(s32 num)
 void LCD_WriteBinary(u8 num)
 {
 	s8 i;
-	for(i=7;i<=0;i--)
+	u8 flag=0;
+	for(i=7;i>=0;i--)
+	{
+		if((GET_BIT(num,i)==1) && (flag==0))
+		{
+			flag=1;
+			LCD_WriteChar(GET_BIT(num,i)+'0');
+		}
+		else if(flag==1)
+		{
+			LCD_WriteChar(GET_BIT(num,i)+'0');
+		}
+	}
+}
+
+void LCD_WriteBinary_8B(u8 num)
+{
+	s8 i;
+	for(i=7;i>=0;i--)
 	{
 		LCD_WriteChar(GET_BIT(num,i)+'0');
 	}
 }
+
 void LCD_WriteHex(u8 num)
 {
 	u8 Lnibble=num & 0x0f;
