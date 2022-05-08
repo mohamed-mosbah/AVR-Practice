@@ -32,7 +32,7 @@ int main(void)
 		LCD_SetCursor(0,8);
 		LCD_WriteHex(x);
 		LCD_SetCursor(1,2);
-		LCD_WriteBinary(x);
+		LCD_WriteBinary_8B(x);
 
 		x++;
 		_delay_ms(1000);
