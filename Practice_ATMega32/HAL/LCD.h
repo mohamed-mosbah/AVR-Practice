@@ -12,9 +12,28 @@
 
 #include "StdTypes.h"
 #include "DIO_Interface.h"
+#include "LCD_Private.h"
 
 #define F_CPU 8000000
 #include <util/delay.h>
+
+/**********************************
+* LCD_4BIT
+* LCD_8BIT
+**********************************/
+#define		LCD_MODE	LCD_4BIT
+
+#define		RS			PINB4
+#define		EN			PINB5
+
+//Only used with LCD_8BIT mode
+#define		LCD_PORT	PA
+
+//Only used with LCD_4BIT mode
+#define		D4			PINA4
+#define		D5			PINA5
+#define		D6			PINA6
+#define		D7			PINA7
 
 
 void WriteInstruction(u8 ins);
@@ -32,6 +51,7 @@ void LCD_WriteBinary_8B(u8 num);
 void LCD_WriteHex(u8 num);
 
 void LCD_SetCursor(u8 line, u8 cell);
+void LCD_ClearLocation(u8 line, u8 cell);
 
 
 #endif /* LCD_H_ */

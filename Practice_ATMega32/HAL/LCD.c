@@ -8,10 +8,7 @@
 #include "LCD.h"
 #include "DIO_Interface.h"
 
-#define LCD_PORT PA
-#define RS PINB4
-#define EN PINB5
-
+#if LCD_MODE==LCD_8BIT
 void WriteInstruction(u8 ins)
 {
 	DIO_WritePin(RS,LOW);
@@ -20,7 +17,15 @@ void WriteInstruction(u8 ins)
 	_delay_ms(1);
 	DIO_WritePin(EN,LOW);
 }
-
+void WriteData(u8 data)
+{
+	DIO_WritePin(RS,HIGH);
+	DIO_WritePort(LCD_PORT,data);
+	DIO_WritePin(EN,HIGH);
+	_delay_ms(1);
+	DIO_WritePin(EN,LOW);
+	_delay_ms(1);
+}
 void LCD_Init(void)
 {
 	_delay_ms(50);
@@ -32,15 +37,61 @@ void LCD_Init(void)
 	_delay_ms(2);
 	WriteInstruction(0x06); //0x06 for no shift //0x07 for shift
 }
-void WriteData(u8 data)
+#elif LCD_MODE==LCD_4BIT
+
+
+void WriteInstruction(u8 ins)
 {
-	DIO_WritePin(RS,HIGH);
-	DIO_WritePort(LCD_PORT,data);
+	DIO_WritePin(RS,LOW);
+	DIO_WritePort(D7,(DIO_PinVoltage_type)GET_BIT(ins,7));
+	DIO_WritePort(D6,(DIO_PinVoltage_type)GET_BIT(ins,6));
+	DIO_WritePort(D5,(DIO_PinVoltage_type)GET_BIT(ins,5));
+	DIO_WritePort(D4,(DIO_PinVoltage_type)GET_BIT(ins,4));
 	DIO_WritePin(EN,HIGH);
 	_delay_ms(1);
 	DIO_WritePin(EN,LOW);
+	
+	DIO_WritePort(D7,(DIO_PinVoltage_type)GET_BIT(ins,3));
+	DIO_WritePort(D6,(DIO_PinVoltage_type)GET_BIT(ins,2));
+	DIO_WritePort(D5,(DIO_PinVoltage_type)GET_BIT(ins,1));
+	DIO_WritePort(D4,(DIO_PinVoltage_type)GET_BIT(ins,0));
+	DIO_WritePin(EN,HIGH);
 	_delay_ms(1);
+	DIO_WritePin(EN,LOW);
 }
+void WriteData(u8 data)
+{
+	DIO_WritePin(RS,HIGH);
+	DIO_WritePort(D7,(DIO_PinVoltage_type)GET_BIT(data,7));
+	DIO_WritePort(D6,(DIO_PinVoltage_type)GET_BIT(data,6));
+	DIO_WritePort(D5,(DIO_PinVoltage_type)GET_BIT(data,5));
+	DIO_WritePort(D4,(DIO_PinVoltage_type)GET_BIT(data,4));
+	DIO_WritePin(EN,HIGH);
+	_delay_ms(1);
+	DIO_WritePin(EN,LOW);
+	
+	DIO_WritePort(D7,(DIO_PinVoltage_type)GET_BIT(data,3));
+	DIO_WritePort(D6,(DIO_PinVoltage_type)GET_BIT(data,2));
+	DIO_WritePort(D5,(DIO_PinVoltage_type)GET_BIT(data,1));
+	DIO_WritePort(D4,(DIO_PinVoltage_type)GET_BIT(data,0));
+	DIO_WritePin(EN,HIGH);
+	_delay_ms(1);
+	DIO_WritePin(EN,LOW);
+}
+void LCD_Init(void)
+{
+	_delay_ms(50);
+	WriteInstruction(0x02);
+	WriteInstruction(0x38);
+	_delay_ms(1);
+	WriteInstruction(0x0C);
+	_delay_ms(1);
+	WriteInstruction(0x01);
+	_delay_ms(2);
+	WriteInstruction(0x06); //0x06 for no shift //0x07 for shift
+}
+#endif
+
 
 /********************************* LCD Services ********************************/
 
