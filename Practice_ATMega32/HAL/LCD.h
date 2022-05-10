@@ -21,7 +21,7 @@
 * LCD_4BIT
 * LCD_8BIT
 **********************************/
-#define		LCD_MODE	LCD_4BIT
+#define		LCD_MODE	LCD_8BIT
 
 #define		RS			PINB4
 #define		EN			PINB5

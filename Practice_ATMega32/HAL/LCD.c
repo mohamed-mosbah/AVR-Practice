@@ -9,6 +9,7 @@
 #include "DIO_Interface.h"
 
 #if LCD_MODE==LCD_8BIT
+
 void WriteInstruction(u8 ins)
 {
 	DIO_WritePin(RS,LOW);
@@ -37,7 +38,7 @@ void LCD_Init(void)
 	_delay_ms(2);
 	WriteInstruction(0x06); //0x06 for no shift //0x07 for shift
 }
-#elif LCD_MODE==LCD_4BIT
+#elif LCD_MODE == LCD_4BIT
 
 
 void WriteInstruction(u8 ins)
@@ -82,7 +83,7 @@ void LCD_Init(void)
 {
 	_delay_ms(50);
 	WriteInstruction(0x02);
-	WriteInstruction(0x38);
+	WriteInstruction(0x28);
 	_delay_ms(1);
 	WriteInstruction(0x0C);
 	_delay_ms(1);

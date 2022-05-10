@@ -127,6 +127,9 @@
     <Compile Include="HAL\LCD.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="HAL\LCD_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>

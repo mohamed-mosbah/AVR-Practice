@@ -17,7 +17,7 @@ int main(void)
 	DIO_Init();
 	LCD_Init();
 	LCD_Clear();
-	
+	LCD_WriteString("Mohamed");
     while (1) 
     {
 		u8 k=KEYPAD_GetEntry();
@@ -26,7 +26,6 @@ int main(void)
 			
 			LCD_WriteChar(k);
 		}
-
     }
 }
 
