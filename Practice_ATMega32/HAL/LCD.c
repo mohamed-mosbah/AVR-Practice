@@ -42,6 +42,8 @@ void WriteData(u8 data)
 	_delay_ms(1);
 }
 
+/********************************* LCD Services ********************************/
+
 void LCD_WriteChar(u8 ch)
 {
 	WriteData(ch);
@@ -142,4 +144,10 @@ void LCD_SetCursor(u8 line, u8 cell)
 	{
 		WriteInstruction(0x80|0x40|cell);
 	}
+}
+
+void LCD_ClearLocation(u8 line, u8 cell)
+{
+	LCD_SetCursor(line,cell);
+	LCD_WriteChar(' ');
 }
