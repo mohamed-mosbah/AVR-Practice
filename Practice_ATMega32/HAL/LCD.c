@@ -40,22 +40,21 @@ void LCD_Init(void)
 }
 #elif LCD_MODE == LCD_4BIT
 
-
 void WriteInstruction(u8 ins)
 {
 	DIO_WritePin(RS,LOW);
-	DIO_WritePort(D7,(DIO_PinVoltage_type)GET_BIT(ins,7));
-	DIO_WritePort(D6,(DIO_PinVoltage_type)GET_BIT(ins,6));
-	DIO_WritePort(D5,(DIO_PinVoltage_type)GET_BIT(ins,5));
-	DIO_WritePort(D4,(DIO_PinVoltage_type)GET_BIT(ins,4));
+	DIO_WritePin(D7,(DIO_PinVoltage_type)GET_BIT(ins,7));
+	DIO_WritePin(D6,(DIO_PinVoltage_type)GET_BIT(ins,6));
+	DIO_WritePin(D5,(DIO_PinVoltage_type)GET_BIT(ins,5));
+	DIO_WritePin(D4,(DIO_PinVoltage_type)GET_BIT(ins,4));
 	DIO_WritePin(EN,HIGH);
 	_delay_ms(1);
 	DIO_WritePin(EN,LOW);
 	
-	DIO_WritePort(D7,(DIO_PinVoltage_type)GET_BIT(ins,3));
-	DIO_WritePort(D6,(DIO_PinVoltage_type)GET_BIT(ins,2));
-	DIO_WritePort(D5,(DIO_PinVoltage_type)GET_BIT(ins,1));
-	DIO_WritePort(D4,(DIO_PinVoltage_type)GET_BIT(ins,0));
+	DIO_WritePin(D7,(DIO_PinVoltage_type)GET_BIT(ins,3));
+	DIO_WritePin(D6,(DIO_PinVoltage_type)GET_BIT(ins,2));
+	DIO_WritePin(D5,(DIO_PinVoltage_type)GET_BIT(ins,1));
+	DIO_WritePin(D4,(DIO_PinVoltage_type)GET_BIT(ins,0));
 	DIO_WritePin(EN,HIGH);
 	_delay_ms(1);
 	DIO_WritePin(EN,LOW);
@@ -63,18 +62,18 @@ void WriteInstruction(u8 ins)
 void WriteData(u8 data)
 {
 	DIO_WritePin(RS,HIGH);
-	DIO_WritePort(D7,(DIO_PinVoltage_type)GET_BIT(data,7));
-	DIO_WritePort(D6,(DIO_PinVoltage_type)GET_BIT(data,6));
-	DIO_WritePort(D5,(DIO_PinVoltage_type)GET_BIT(data,5));
-	DIO_WritePort(D4,(DIO_PinVoltage_type)GET_BIT(data,4));
+	DIO_WritePin(D7,(DIO_PinVoltage_type)GET_BIT(data,7));
+	DIO_WritePin(D6,(DIO_PinVoltage_type)GET_BIT(data,6));
+	DIO_WritePin(D5,(DIO_PinVoltage_type)GET_BIT(data,5));
+	DIO_WritePin(D4,(DIO_PinVoltage_type)GET_BIT(data,4));
 	DIO_WritePin(EN,HIGH);
 	_delay_ms(1);
 	DIO_WritePin(EN,LOW);
 	
-	DIO_WritePort(D7,(DIO_PinVoltage_type)GET_BIT(data,3));
-	DIO_WritePort(D6,(DIO_PinVoltage_type)GET_BIT(data,2));
-	DIO_WritePort(D5,(DIO_PinVoltage_type)GET_BIT(data,1));
-	DIO_WritePort(D4,(DIO_PinVoltage_type)GET_BIT(data,0));
+	DIO_WritePin(D7,(DIO_PinVoltage_type)GET_BIT(data,3));
+	DIO_WritePin(D6,(DIO_PinVoltage_type)GET_BIT(data,2));
+	DIO_WritePin(D5,(DIO_PinVoltage_type)GET_BIT(data,1));
+	DIO_WritePin(D4,(DIO_PinVoltage_type)GET_BIT(data,0));
 	DIO_WritePin(EN,HIGH);
 	_delay_ms(1);
 	DIO_WritePin(EN,LOW);
@@ -85,7 +84,7 @@ void LCD_Init(void)
 	WriteInstruction(0x02);
 	WriteInstruction(0x28);
 	_delay_ms(1);
-	WriteInstruction(0x0C);
+	WriteInstruction(0x0c);
 	_delay_ms(1);
 	WriteInstruction(0x01);
 	_delay_ms(2);
