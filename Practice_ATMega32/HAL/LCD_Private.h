@@ -12,4 +12,7 @@
 #define LCD_4BIT	1
 #define LCD_8BIT	0
 
+#define LCD_CELLS_MAX_OFFSET (LCD_CELLS - 1)
+#define LCD_LINES_MAX_OFFSET (LCD_LINES - 1)
+
 #endif /* LCD_PRIVATE_H_ */

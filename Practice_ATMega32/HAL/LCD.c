@@ -7,6 +7,10 @@
 
 #include "LCD.h"
 #include "DIO_Interface.h"
+#include "LCD_Cfg.h"
+
+static u8 cell = 0;
+static u8 line = 0;
 
 #if LCD_MODE==LCD_8BIT
 
@@ -201,4 +205,56 @@ void LCD_ClearLocation(u8 line, u8 cell)
 {
 	LCD_SetCursor(line,cell);
 	LCD_WriteChar(' ');
+}
+
+
+static void DecrementCursor(void)
+{
+	if (cell == 0)
+	{
+		if (line == 0)
+		{
+			line = LCD_LINES_MAX_OFFSET;
+			cell = LCD_CELLS_MAX_OFFSET;
+		}
+		else
+		{
+			line -= 1;
+			cell = LCD_CELLS_MAX_OFFSET;
+		}
+	}
+	else
+	{
+		cell -= 1;
+	}
+	LCD_SetCursor(line, cell);
+}
+
+static void IncrementCursor(void)
+{
+	if (cell == LCD_CELLS_MAX_OFFSET)
+	{
+		if (line == LCD_LINES_MAX_OFFSET)
+		{
+			line = 0;
+			cell = 0;
+		}
+		else
+		{
+			line += 1;
+			cell = 0;
+		}
+	}
+	else
+	{
+		cell += 1;
+	}
+	LCD_SetCursor(line, cell);
+}
+
+void LCD_ClearLast(void)
+{
+	DecrementCursor();
+	LCD_WriteChar(' ');
+	DecrementCursor();
 }
