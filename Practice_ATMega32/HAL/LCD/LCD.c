@@ -102,6 +102,7 @@ void LCD_Init(void)
 void LCD_WriteChar(u8 ch)
 {
 	WriteData(ch);
+	IncrementCursor();
 }
 
 void LCD_WriteString(u8 * str)
@@ -116,6 +117,8 @@ void LCD_WriteString(u8 * str)
 void LCD_Clear(void)
 {
 	WriteInstruction(0x01);
+	cell=0;
+	
 	_delay_ms(2);
 }
 
