@@ -23,8 +23,14 @@ typedef enum{
 	CH_7,
 	CH_8
 	}ADC_Channel_type;
+	
+typedef	enum{
+	VREF_AREF=0,
+	VREF_AVCC,
+	VREF_256V=3
+	}ADC_Volt_type;
 
-void ADC_Init(void);
+void ADC_Init(ADC_Volt_type ref);
 u16 ADC_Read(ADC_Channel_type ch);
 
 
