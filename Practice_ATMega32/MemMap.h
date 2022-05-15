@@ -34,9 +34,13 @@
 #define		REFS1		7
 #define		REFS0		6
 #define		ADLER		5
+
 #define		ADCRSA		(*(volatile unsigned char*)0x26)
+#define		ADEN		7
+#define		ADSC		6
 #define		ADH			(*(volatile unsigned char*)0x25)
-#define		ADL			(*(volatile unsigned char*)0x25)
+#define		ADL			(*(volatile unsigned char*)0x24)
+#define		ADC			(*(volatile unsigned short*)0x24)
 
 
 
