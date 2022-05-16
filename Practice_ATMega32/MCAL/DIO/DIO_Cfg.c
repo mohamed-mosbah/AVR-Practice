@@ -13,8 +13,8 @@
    INPULL   */	
 	
 const DIO_PinMode_type PinsModeArray[TOTAL_PINS]={
-    OUTPUT,      /* Port A Pin 0 ADC0*/
-	OUTPUT,      /* Port A Pin 1 ADC1*/
+    INFREE,      /* Port A Pin 0 ADC0*/
+	INFREE,      /* Port A Pin 1 ADC1*/
 	OUTPUT,      /* Port A Pin 2 */
 	OUTPUT,      /* Port A Pin 3 */
 	OUTPUT,      /* Port A Pin 4 */
