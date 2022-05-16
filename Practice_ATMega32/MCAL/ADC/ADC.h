@@ -26,7 +26,7 @@ typedef enum{
 	
 typedef	enum{
 	VREF_AREF=0,
-	VREF_AVCC,
+	VREF_AVCC=1,
 	VREF_256V=3
 	}ADC_Volt_type;
 	

@@ -43,7 +43,7 @@ u16 ADC_Read(ADC_Channel_type ch)
 {
 	u16 adc;
 	//select ch
-	ADMUX=ADMUX&0x0E; //0B11100000
+	ADMUX=ADMUX&0xE0; //0B11100000
 	ADMUX=ADMUX|ch;
 	
 	//start conversion
@@ -53,5 +53,5 @@ u16 ADC_Read(ADC_Channel_type ch)
 	//read
 	//adc=((u16)ADCH<<8)|(u16)ADCL;
 	adc=ADC;
-	return ADC;
+	return adc;
 }
