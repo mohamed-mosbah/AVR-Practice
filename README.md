@@ -8,6 +8,7 @@ This is for tracking my code while practicing coding different drivers for ATMeg
 
 Implemented MCAL Drivers till now are:
 * DIO
+* ADC
 
 # HAL
 >The Hardware abstraction layer (HAL) allows the microcontroller to interact with a hardware device at a general or abstract level rather than at a detailed hardware level.
