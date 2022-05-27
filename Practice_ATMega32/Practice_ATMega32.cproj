@@ -107,6 +107,7 @@
       <Value>../HAL/Motor</Value>
       <Value>../HAL/KeyPad</Value>
       <Value>../HAL/LCD</Value>
+      <Value>../HAL/Sensors</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
@@ -138,6 +139,12 @@
     <Compile Include="APP\Calculator_Private.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="APP\TempFilter.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\TempFilter.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="HAL\KeyPad\KeyPad.c">
       <SubType>compile</SubType>
     </Compile>
@@ -166,6 +173,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="HAL\Motor\Motor_Private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Sensors\Sensors.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="HAL\Sensors\Sensors.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
@@ -206,6 +219,7 @@
     <Folder Include="HAL\KeyPad" />
     <Folder Include="HAL\LCD" />
     <Folder Include="HAL\Motor" />
+    <Folder Include="HAL\Sensors" />
     <Folder Include="MCAL" />
     <Folder Include="HAL" />
     <Folder Include="APP" />

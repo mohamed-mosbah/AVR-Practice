@@ -5,9 +5,10 @@
  *  Author: Mohamed
  */ 
 
+#include "LCD_Private.h"
 #include "LCD.h"
-#include "DIO_Interface.h"
 #include "LCD_Cfg.h"
+
 
 static u8 cell = 0;
 static u8 line = 0;
@@ -102,7 +103,7 @@ void LCD_Init(void)
 void LCD_WriteChar(u8 ch)
 {
 	WriteData(ch);
-	IncrementCursor();
+	
 }
 
 void LCD_WriteString(u8 * str)
@@ -118,7 +119,7 @@ void LCD_Clear(void)
 {
 	WriteInstruction(0x01);
 	cell=0;
-	
+	line=0;
 	_delay_ms(2);
 }
 

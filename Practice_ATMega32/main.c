@@ -11,15 +11,42 @@
 #include "LCD.h"
 #include "KeyPad.h"
 #include "Calculator.h"
+#include "ADC.h"
+#include "Sensors.h"
+
+#define F_CPU 8000000
+#include <util/delay.h>
 
 
 int main(void)
 {
 	DIO_Init();
 	LCD_Init();
+	//CLR_BIT(ADMUX,REFS1);
+	//SET_BIT(ADMUX,REFS0);
+	//ADC_Init(VREF_AVCC,ADC_SCALER_64);
+	//u16 x;
 	
-	Calculator_run();
 	
-  
+	while(1)
+	{
+		Calculator_run();
+		//LCD_WriteChar('c');
+		/*
+		LCD_SetCursor(0,0);
+		x=ReadTemp();
+		LCD_WriteNumber(x);
+		
+		LCD_SetCursor(1,5);
+		x=ADC_Read(CH_0);
+		LCD_WriteNumber(x);
+		
+		LCD_SetCursor(1,0);
+		x=POT_ReadVolt();
+		LCD_WriteNumber(x);
+		*/
+	}
+	
+
 }
 
