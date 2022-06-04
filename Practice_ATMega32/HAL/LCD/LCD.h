@@ -12,8 +12,6 @@
 
 #include "StdTypes.h"
 #include "DIO_Interface.h"
-#include "LCD_Private.h"
-
 
 
 #define F_CPU 8000000
