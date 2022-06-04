@@ -15,7 +15,7 @@
 const DIO_PinMode_type PinsModeArray[TOTAL_PINS]={
     INFREE,      /* Port A Pin 0 ADC0*/
 	INFREE,      /* Port A Pin 1 ADC1*/
-	OUTPUT,      /* Port A Pin 2 */
+	INFREE,      /* Port A Pin 2 */
 	OUTPUT,      /* Port A Pin 3 */
 	OUTPUT,      /* Port A Pin 4 */
 	OUTPUT,      /* Port A Pin 5 */
