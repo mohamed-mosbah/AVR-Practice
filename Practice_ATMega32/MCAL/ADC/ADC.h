@@ -42,7 +42,8 @@ typedef enum{
 
 void ADC_Init(ADC_Volt_type ref, ADC_Scaler_type scaler);
 u16 ADC_Read(ADC_Channel_type ch);
-
-
+void ADC_StartConversion(ADC_Channel_type ch);
+u16 ADC_GetADCValue(void);
+u16 ADC_GetADCValuePeriodicCheck(u16 *pdata);
 
 #endif /* ADC_H_ */
