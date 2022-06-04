@@ -18,4 +18,5 @@ Implemented HAL Drivers till now are:
 * Character LCD
 * Keypad
 * Motor
+* Sensors (Potentiometer and LM35)
 
