@@ -108,6 +108,7 @@
       <Value>../HAL/KeyPad</Value>
       <Value>../HAL/LCD</Value>
       <Value>../HAL/Sensors</Value>
+      <Value>../MCAL/EXInterrupt</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
@@ -205,6 +206,12 @@
     <Compile Include="MCAL\DIO\DIO_Private.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL\EXInterrupt\EXInterrupt.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\EXInterrupt\Exinterrupt.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="MemMap.h">
       <SubType>compile</SubType>
     </Compile>
@@ -225,6 +232,7 @@
     <Folder Include="APP" />
     <Folder Include="MCAL\DIO" />
     <Folder Include="MCAL\ADC" />
+    <Folder Include="MCAL\EXInterrupt" />
     <Folder Include="SERVICES" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />

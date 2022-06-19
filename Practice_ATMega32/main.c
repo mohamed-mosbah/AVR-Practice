@@ -63,7 +63,7 @@ int main(void)
 	
 
 }
-
+/*
 ISR(TIMER0_OVF_vect)
 {
 	 static u16 c=0;
@@ -78,4 +78,22 @@ ISR(TIMER0_OVF_vect)
 		c=0;
 	 }
 }
+*/
+
+ISR(TIMER0_OVF_vect)
+{
+	static u8 c=0;
+	c++;
+	TCNT0=6;
+	if(c==72)
+	{
+		DIO_WritePin(PINC3,HIGH);
+	}
+	else if (c==80)
+	{
+		DIO_WritePin(PINC3,LOW);
+		c=0;
+	}
+}
+
 
