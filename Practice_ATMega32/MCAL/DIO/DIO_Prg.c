@@ -182,7 +182,25 @@ void DIO_TogglePin(DIO_Pin_type pin)
 	DIO_Port_type port;
 	pin_num=pin%8;
 	port=pin/8;
-	TOG_BIT(port,pin_num);
+	switch(port)
+	{
+		case PA:
+		
+		TOG_BIT(PORTA,pin_num);
+		break;
+		case PB:
+		
+		TOG_BIT(PORTB,pin_num);
+		break;
+		case PC:
+		
+		TOG_BIT(PORTC,pin_num);
+		break;
+		case PD:
+		
+		TOG_BIT(PORTD,pin_num);
+		break;
+	}
 	
 }
 
