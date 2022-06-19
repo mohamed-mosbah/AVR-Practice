@@ -13,9 +13,15 @@
 #include "Calculator.h"
 #include "ADC.h"
 #include "Sensors.h"
+#include "Exinterrupt.h"
 
 #define F_CPU 8000000
 #include <util/delay.h>
+
+
+#define		ADC_VECT		__vector_10
+
+
 
 
 int main(void)
@@ -23,10 +29,12 @@ int main(void)
 	DIO_Init();
 	LCD_Init();
 	ADC_Init(VREF_AVCC,ADC_SCALER_64);
-	//CLR_BIT(ADMUX,REFS1);
-	//SET_BIT(ADMUX,REFS0);
-	//ADC_Init(VREF_AVCC,ADC_SCALER_64);
 	u16 x;
+	ENABLE_GLOBAL_INT();
+	//enable timer
+	TCCR0=0x02;
+	//enable overflow interrupt
+	TIMSK= 0x01;
 	
 	
 	while(1)
@@ -54,5 +62,20 @@ int main(void)
 	}
 	
 
+}
+
+ISR(TIMER0_OVF_vect)
+{
+	 static u16 c=0;
+	 c++;
+	 if((c==3906)||(c==7812))
+	 {
+		 DIO_TogglePin(PINC0);
+	 }
+	 if(c==7812)
+	 {
+		DIO_TogglePin(PINC1);
+		c=0;
+	 }
 }
 
