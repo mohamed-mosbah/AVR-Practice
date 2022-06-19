@@ -13,6 +13,9 @@
 #include "MemMap.h"
 #include "Utils.h"
 
+#define ENABLE_GLOBAL_INT		sei
+#define DISABLE_GLOBAL_INT		cli
+
 typedef enum{
 	LOW_LEVEL=0,
 	ANY_LOGIC_CHANGE,
@@ -30,7 +33,7 @@ void EXI_Enable(ExInterruptSource_type Interrupt);
 void EXI_Disable(ExInterruptSource_type Interrupt);
 void EXI_TriggerEdge(ExInterruptSource_type Interrupt,TriggerEdge_type Edge);
 
-
+void EXI_SetCallBack(ExInterruptSource_type Interrupt,void(*LocalPtr)(void));
 
 
 #endif /* EXINTERRUPT_H_ */
