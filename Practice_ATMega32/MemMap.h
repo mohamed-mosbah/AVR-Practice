@@ -45,6 +45,38 @@
 #define		ADC			(*(volatile unsigned short*)0x24)
 
 /*************************************************************************************/
+/*External Interrupt */
+#define MCUCSR   (*(volatile unsigned char*)0x54)
+#define ISC2 6
+
+#define MCUCR   (*(volatile unsigned char*)0x55)
+#define ISC00 0
+#define ISC01 1
+#define ISC10 2
+#define ISC11 3
+
+#define GICR     (*(volatile unsigned char*)0x5B)
+#define INT1 7
+#define INT0 6
+#define INT2 5
+
+#define GIFR    (*(volatile unsigned char*)0x5A)
+#define INTF1 7
+#define INTF0 6
+#define INTF2 5
+
+/*interrupt functions*/
+
+# define sei()  __asm__ __volatile__ ("sei" ::)
+# define cli()  __asm__ __volatile__ ("cli" ::)
+# define reti()  __asm__ __volatile__ ("reti" ::)
+# define ret()  __asm__ __volatile__ ("ret" ::)
+
+#  define ISR(vector,...)            \
+void vector (void) __attribute__ ((signal))__VA_ARGS__ ; \
+void vector (void)
+
+/*************************************************************************************/
 /* Interrupt vectors */
 
 /* External Interrupt Request 0 */
