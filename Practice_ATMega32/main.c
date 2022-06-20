@@ -21,7 +21,7 @@
 
 #define		ADC_VECT		__vector_10
 
-static volatile u16 c=0;
+static volatile u8 c=0;
 
 
 int main(void)
@@ -44,7 +44,7 @@ int main(void)
 	_delay_ms(1000);
 	num=TCNT0+((u32)c*256);
 	LCD_SetCursor(0,6);
-	LCD_WriteNumber(num);
+	LCD_WriteNumber(c);
 	
 	while(1)
 	{
@@ -72,7 +72,7 @@ ISR(TIMER0_OVF_vect)
 
 ISR(TIMER0_OVF_vect)
 {
-	c++;
+	c=TCNT0;
 	
 }
 
