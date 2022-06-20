@@ -33,22 +33,20 @@ int main(void)
 	u16 x;
 	ENABLE_GLOBAL_INT();
 	//enable timer
-	OCR0=100;
-	TCCR0=0x01;
+	//OCR0=100;
+	//TCCR0=0x02;
 	
 	//enable overflow interrupt
-	TIMSK= 0x01;
+	//TIMSK= 0x01;
 	//SET_BIT(TIMSK,OCIE0); //enable compare match interrupt
-	SET_BIT(TCCR0,COM00);
+	//SET_BIT(TCCR0,COM00);
+	TCCR0=0b00011010;
 	TCNT0=0;
-	_delay_ms(1000);
-	num=TCNT0+((u32)c*256);
-	LCD_SetCursor(0,6);
-	LCD_WriteNumber(c);
 	
 	while(1)
 	{
-		
+		num =ADC_Read(CH_1);
+		OCR0=num/4;
 	}
 	
 
@@ -72,12 +70,13 @@ ISR(TIMER0_OVF_vect)
 
 ISR(TIMER0_OVF_vect)
 {
-	c=TCNT0;
+	
 	
 }
-
+/*
 ISR(TIMER0_OC_vect)
 {
 	DIO_TogglePin(PINC0);
 }
 
+*/
