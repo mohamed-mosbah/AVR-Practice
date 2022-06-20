@@ -34,7 +34,7 @@ int main(void)
 	ENABLE_GLOBAL_INT();
 	//enable timer
 	OCR0=100;
-	TCCR0=0x02;
+	TCCR0=0x01;
 	
 	//enable overflow interrupt
 	TIMSK= 0x01;
