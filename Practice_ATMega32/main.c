@@ -21,11 +21,12 @@
 
 #define		ADC_VECT		__vector_10
 
-
+static volatile u16 c=0;
 
 
 int main(void)
 {
+	u32 num=0;
 	DIO_Init();
 	LCD_Init();
 	ADC_Init(VREF_AVCC,ADC_SCALER_64);
@@ -34,34 +35,20 @@ int main(void)
 	//enable timer
 	OCR0=100;
 	TCCR0=0x02;
+	
 	//enable overflow interrupt
 	TIMSK= 0x01;
-	SET_BIT(TIMSK,OCIE0); //enable compare match interrupt
+	//SET_BIT(TIMSK,OCIE0); //enable compare match interrupt
 	SET_BIT(TCCR0,COM00);
-	
+	TCNT0=0;
+	_delay_ms(1000);
+	num=TCNT0+((u32)c*256);
+	LCD_SetCursor(0,6);
+	LCD_WriteNumber(num);
 	
 	while(1)
 	{
-		x=POT_ReadPercentage();
-		LCD_SetCursor(0,0);
-		LCD_WriteNumber(x);
-		LCD_WriteString("   ");
-		//LCD_WriteChar('c');
 		
-		
-		ADC_StartConversion(CH_1);
-		if(ADC_GetADCValuePeriodicCheck(&x))
-		{
-			LCD_SetCursor(1,10);
-			LCD_WriteNumber(x);
-			LCD_WriteString("   ");
-		}
-		
-		
-		LCD_SetCursor(1,0);
-		x=POT_ReadVolt();
-		LCD_WriteNumber(x);
-		LCD_WriteString("   ");
 	}
 	
 
@@ -85,7 +72,7 @@ ISR(TIMER0_OVF_vect)
 
 ISR(TIMER0_OVF_vect)
 {
-	DIO_TogglePin(PINC2);
+	c++;
 	
 }
 
