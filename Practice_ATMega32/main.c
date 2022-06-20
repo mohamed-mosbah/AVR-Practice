@@ -32,9 +32,12 @@ int main(void)
 	u16 x;
 	ENABLE_GLOBAL_INT();
 	//enable timer
+	OCR0=100;
 	TCCR0=0x02;
 	//enable overflow interrupt
 	TIMSK= 0x01;
+	SET_BIT(TIMSK,OCIE0); //enable compare match interrupt
+	SET_BIT(TCCR0,COM00);
 	
 	
 	while(1)
@@ -82,18 +85,12 @@ ISR(TIMER0_OVF_vect)
 
 ISR(TIMER0_OVF_vect)
 {
-	static u8 c=0;
-	c++;
-	TCNT0=6;
-	if(c==72)
-	{
-		DIO_WritePin(PINC3,HIGH);
-	}
-	else if (c==80)
-	{
-		DIO_WritePin(PINC3,LOW);
-		c=0;
-	}
+	DIO_TogglePin(PINC2);
+	
 }
 
+ISR(TIMER0_OC_vect)
+{
+	DIO_TogglePin(PINC0);
+}
 
