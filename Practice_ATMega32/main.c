@@ -38,14 +38,15 @@ int main(void)
 	
 	//enable overflow interrupt
 	//TIMSK= 0x01;
-	//SET_BIT(TIMSK,OCIE0); //enable compare match interrupt
+	SET_BIT(TIMSK,OCIE0); //enable compare match interrupt
 	//SET_BIT(TCCR0,COM00);
-	TCCR0=0b00011010;
+	TCCR0=0b01111010; //fast PWM, inverting
 	TCNT0=0;
+	OCR0=64;
 	
 	while(1)
 	{
-		num =ADC_Read(CH_1);
+		num=ADC_Read(CH_1);
 		OCR0=num/4;
 	}
 	
@@ -71,12 +72,10 @@ ISR(TIMER0_OVF_vect)
 ISR(TIMER0_OVF_vect)
 {
 	
-	
+	DIO_TogglePin(PINC1);
 }
-/*
 ISR(TIMER0_OC_vect)
 {
 	DIO_TogglePin(PINC0);
 }
 
-*/
