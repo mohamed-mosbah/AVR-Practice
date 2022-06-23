@@ -7,6 +7,8 @@ Practicing Embedded Software Development on AVR microcontrollers
 Implemented MCAL Drivers till now are:
 * DIO
 * ADC
+* External Interrupts
+* Timers
 
 # HAL
 >The Hardware abstraction layer (HAL) allows the microcontroller to interact with a hardware device at a general or abstract level rather than at a detailed hardware level.
