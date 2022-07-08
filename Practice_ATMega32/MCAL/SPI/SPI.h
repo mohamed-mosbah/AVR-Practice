@@ -19,8 +19,12 @@ typedef enum{
 	SLAVE
 	}SPI_init_type;
 	
-void SPI_Init(SPI_init_type);
+void SPI_Init(SPI_init_type type);
+u8 SPI_SendReceive(u8 data);
 
+void SPI_SendNoBlock(u8 data);
+u8 SPI_ReceiveNoBlock();
 
+u8 SPI_ReceivePeriodic(u8* data);
 
 #endif /* SPI_H_ */
