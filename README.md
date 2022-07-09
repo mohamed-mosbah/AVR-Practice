@@ -9,6 +9,7 @@ Implemented MCAL Drivers till now are:
 * ADC
 * External Interrupts
 * Timers
+* SPI
 
 # HAL
 >The Hardware abstraction layer (HAL) allows the microcontroller to interact with a hardware device at a general or abstract level rather than at a detailed hardware level.
